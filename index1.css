@@ -649,7 +649,7 @@ img {
     /* Fix for the Header/Logo area overlapping */
     .header {
         backdrop-filter: blur(25px); /* Ensure header is readable over text */
-      .header{
+     
     position: fixed;      /* Keeps header fixed when scrolling */
     top: 0;               /* Stick to the top */
     left: 0;
@@ -665,7 +665,7 @@ img {
     body{
       width: 100%;
     }
-}
+
 
 /* Ensure the footer is always at the bottom if content is short */
 body {
@@ -882,5 +882,54 @@ footer {
         height: 100% !important;
         margin: 0 !important;
         z-index: 100001 !important;
+    }
+}
+/* ============================================================
+   TARGETED FIXES FOR PHONE BACKGROUND & MENU WIDTH
+   ============================================================ */
+
+/* 1. Fix the background stretching on phones */
+body {
+    background-size: cover !important;
+    background-position: center center !important;
+    background-attachment: fixed !important; /* Keeps image still and properly sized */
+}
+
+@media (max-width: 768px) {
+    /* 2. Fix the Header visibility and Z-index */
+    .header {
+        background: rgba(255, 255, 255, 0.98) !important; /* Make it solid enough to cover content below */
+        z-index: 999999 !important; /* Keep it above ALL blurs */
+        padding: 10px 5% !important;
+    }
+
+    /* 3. Fix the menu width problem (Forces it to span the whole screen) */
+    .navbar {
+        position: static !important; /* Required to let the menu span full width */
+    }
+
+    .nav-link {
+        position: absolute !important;
+        top: 100% !important; /* Sits right under the header */
+        left: 0 !important;    /* Start at the very left edge */
+        width: 100% !important; /* Stretch to the very right edge */
+        background-color: white !important;
+        padding: 20px 0 !important;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1) !important;
+    }
+
+    /* 4. Ensure the Menu Icon is centered vertically and visible */
+    .menu-icon {
+        display: flex !important;
+        align-items: center !important;
+        z-index: 1000000 !important;
+        font-size: 32px !important;
+    }
+
+    /* 5. Center the links inside your new full-width menu */
+    .nav-link li {
+        width: 100% !important;
+        text-align: center !important;
+        padding: 10px 0 !important;
     }
 }
