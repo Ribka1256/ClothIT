@@ -746,19 +746,34 @@ footer {
     }
 
     /* 2. Position the mobile menu correctly under the header */
-    .nav-link {
-        display: none; /* Hidden by default */
+     .nav-link {
+        display: none; /* Hidden until toggled */
         flex-direction: column;
+        
+        /* FIX: These three lines ensure full-width alignment */
         position: absolute;
-        top: 100%; /* Position right below the header */
-        left: 0;
-        width: 100vw; /* Full viewport width to stay within bounds */
+        top: 100%;     /* Sits right below the header */
+        left: 0;       /* Force it to the far left of the header */
+        width: 100%;   /* Fill the entire width of the header */
+        
         background-color: white;
-        padding: 20px;
-        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        padding: 20px 0; /* Padding top/bottom, 0 on sides to prevent offset */
         text-align: center;
-        gap: 15px;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
         z-index: 1000;
+        margin: 0;      /* Reset any margins */
+    }
+
+    /* Reset the parent navbar so it doesn't constrain the menu */
+    .navbar {
+        padding: 0;
+        margin: 0;
+        position: static; /* Allows the absolute child to reference the .header instead */
+    }
+
+    .nav-link li {
+        width: 100%;   /* Make each list item full width for better clicking */
+        padding: 10px 0;
     }
 
     /* 3. When JS adds the .active class, show the menu */
