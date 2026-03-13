@@ -819,4 +819,68 @@ footer {
   background-color:rgb(36, 185, 153);
   width: 100px;
   border-radius: 10px;
+}/* ============================================================
+   MOBILE HEADER & FULL-WIDTH MENU ADJUSTMENT
+   (Append to the bottom of index1.css)
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* 1. Ensure Header stays on top and spans full width */
+    .header {
+        padding: 10px 5% !important; /* Tighter padding for mobile */
+        height: 70px; /* Fixed height for consistency */
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        background: rgba(255, 255, 255, 0.98) !important; /* Solid background to block lower filters */
+        z-index: 100000 !important;
+    }
+
+    /* 2. Fix the Navbar container so it doesn't restrict the menu width */
+    .navbar {
+        position: static !important; /* Allows absolute child to reference the .header */
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* 3. Force Menu List to be exactly full width */
+    .nav-link {
+        display: none; /* Controlled by JS toggle */
+        flex-direction: column !important;
+        
+        /* Position Logic */
+        position: absolute !important;
+        top: 70px !important; /* Must match the header height exactly */
+        left: 0 !important;   /* Aligns to the very left of the screen */
+        width: 100vw !important; /* Full Viewport Width */
+        
+        background-color: white !important;
+        padding: 20px 0 !important;
+        margin: 0 !important;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1) !important;
+        z-index: 99999 !important;
+    }
+
+    /* 4. Center the text inside the full-width menu */
+    .nav-link li {
+        width: 100% !important;
+        text-align: center !important;
+        padding: 15px 0 !important;
+        border-bottom: 1px solid #f0f0f0; /* Subtle separator */
+    }
+
+    .nav-link li:last-child {
+        border-bottom: none;
+    }
+
+    /* 5. Center the Menu Icon vertically in the Header */
+    .menu-icon {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 35px !important;
+        height: 100% !important;
+        margin: 0 !important;
+        z-index: 100001 !important;
+    }
 }
